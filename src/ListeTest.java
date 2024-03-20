@@ -1,10 +1,10 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-class VecteurTest {
+class ListeTest {
 
     @org.junit.jupiter.api.Test
     void getNbElements() {
-        Vecteur test = new Vecteur();
+        Liste test = new Liste();
         assertEquals(0, test.getNbElements());
 
         test.ajouter(0);
