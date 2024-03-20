@@ -1,48 +1,50 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ListeTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getNbElements() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void estVide() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getElementAt() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void ajouter() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testAjouter() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testAjouter1() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void trouver() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void trouverTout() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void effacerAt() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void effacerTout() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testEffacerTout() {
     }
 }
