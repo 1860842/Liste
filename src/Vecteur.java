@@ -9,6 +9,7 @@ public class Vecteur {
         nbElements = 0;
     }
 
+    // Code changer
     public String toString() {
         String str = "[";
         for (int i = 0; i < nbElements; i++)
