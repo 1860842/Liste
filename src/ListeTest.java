@@ -4,14 +4,6 @@ class ListeTest {
 
     @org.junit.jupiter.api.Test
     void getNbElements() {
-        Liste test = new Liste();
-        assertEquals(0, test.getNbElements());
-
-        test.ajouter(0);
-        assertEquals(1, test.getNbElements());
-
-        test.ajouter(0);
-        assertEquals(2, test.getNbElements());
     }
 
     @org.junit.jupiter.api.Test

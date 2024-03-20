@@ -1,14 +1,7 @@
 public class Liste {
-    private int[] tableau;
+    private Noeud premier = null;
     private int nbElements;
-    private static final int RATIO_AGRANDISSEMENT = 2;
-    private static final int TAILLE_INITIALE = 5;
-
-    public Liste() {
-        tableau = new int[TAILLE_INITIALE];
-        nbElements = 0;
-    }
-
+/*
     public String toString() {
         String str = "[";
         for (int i = 0; i < nbElements; i++)
@@ -97,4 +90,5 @@ public class Liste {
         tableau = new int[TAILLE_INITIALE];
         nbElements = 0;
     }
+ */
 }
