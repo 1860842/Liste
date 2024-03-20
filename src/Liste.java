@@ -1,6 +1,11 @@
 public class Liste {
-    private Noeud premier = null;
+    private Noeud premier;
     private int nbElements;
+
+    public Liste(){
+        premier = null;
+        nbElements = 0;
+    }
 /*
     public String toString() {
         String str = "[";

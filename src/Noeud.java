@@ -1,13 +1,14 @@
 public class Noeud {
-    int valeur;
-    int prochain;
+    public int valeur;
+    public Noeud prochain;
 
     public int getValeur() {
         return valeur;
     }
     public Noeud getProchain(){
-        Noeud courant = null;
-        return courant;
+        return null;
     }
-
+    public String toString() {
+        return String.valueOf(valeur);
+    }
 }
