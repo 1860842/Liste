@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        /*
         Liste data = new Liste();
         System.out.println(data.getNbElements());
         System.out.println(data.estVide());
@@ -82,5 +83,6 @@ public class Main {
         data.effacerTout();
         System.out.println(data);
         System.out.println(data.getNbElements());
+         */
     }
 }
