@@ -3,6 +3,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ListeTest {
+    Liste data = new Liste();
+    @Test
+    void setUp(){
+        data.ajouter(0);
+        data.ajouter(2);
+        data.ajouter(4);
+        data.ajouter(6);
+        data.ajouter(8);
+        data.ajouter(10);
+    }
 
     @Test
     void getNbElements() {
@@ -14,6 +24,12 @@ class ListeTest {
 
     @Test
     void getElementAt() {
+        setUp();
+        assertEquals(0,data.getElementAt(0));
+        assertEquals(6,data.getElementAt(3));
+        assertEquals(10,data.getElementAt(5));
+
+
     }
 
     @Test

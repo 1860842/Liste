@@ -6,31 +6,57 @@ public class Liste {
         premier = null;
         nbElements = 0;
     }
-/*
+    public Liste(Noeud premier){
+        this.premier = premier;
+        nbElements++;
+    }
+
     public String toString() {
         String str = "[";
-        for (int i = 0; i < nbElements; i++)
-            str += tableau[i] + ", ";
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            str += courant + ",";
+        }
+        // Sans le toString dans Noeud on ecrit
+        // str += courant.valeur;
         return str + "]";
     }
+
 
     public int getNbElements() {
         return nbElements;
     }
 
+
     public boolean estVide() {
         return nbElements == 0;
     }
 
-    public int getElementAt(int index) {
-        return tableau[index];
+    public int getElementAt(int indexRechercher) {
+        //return tableau[index];
+        int indexActuel = 0;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if (indexActuel == indexRechercher)
+                return courant.getValeur();
+            indexActuel++;
+        }
+        return -1;
     }
 
     public void ajouter(int valeur) {
-        if (nbElements == tableau.length)
-            resize();
-        tableau[nbElements++] = valeur;
+        //tableau[nbElements++] = valeur;
+        Noeud dernier = null;
+        // La boucle ne s'arrête pas tant qu'il n'atteint pas le dernier Noeud, donc dernier = dernier Noeud
+        for (Noeud courant = premier; courant != null; courant = courant.prochain)
+            dernier = courant;
+
+        if(premier == null) {
+            premier = new Noeud(valeur);
+        } else {
+            dernier.prochain = new Noeud(valeur);
+        }
+        nbElements++;
     }
+    /*
 
     public void ajouter(int valeur, int index) {
         if (nbElements == tableau.length)

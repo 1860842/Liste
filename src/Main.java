@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
 
         Liste data = new Liste();
-        /*
+
         System.out.println(data.getNbElements());
         System.out.println(data.estVide());
 
@@ -14,13 +14,8 @@ public class Main {
         System.out.println(data.getNbElements());
         System.out.println(data.estVide());
 
-        System.out.println("Test 2: Agrandir le vecteur quand il est plein");
-        data.ajouter(6);
-        data.ajouter(8);
-        data.ajouter(10);
-        System.out.println(data);
-        System.out.println(data.getNbElements());
-
+        System.out.println(data.getElementAt(0));
+/*
         System.out.println("Test 3: Ajouter des valeurs à des index spécifiques");
         data.ajouter(-1, 0);
         data.ajouter( 5, 4);
