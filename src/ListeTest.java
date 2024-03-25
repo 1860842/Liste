@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ListeTest {
     Liste data = new Liste();
+
     @Test
     void setUp(){
         data.ajouter(0);
