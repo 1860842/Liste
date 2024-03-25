@@ -32,52 +32,99 @@ public class Liste {
     }
 
     public int getElementAt(int indexRechercher) {
-        //return tableau[index];
+        return getNoeudAt(indexRechercher).valeur;
+        /* // Version longue
         int indexActuel = 0;
         for (Noeud courant = premier; courant != null; courant = courant.prochain) {
             if (indexActuel == indexRechercher)
                 return courant.getValeur();
             indexActuel++;
         }
-        return -1;
+        return -1;  */
+    }
+    // Private car utilisé que dans la Classe
+    private Noeud getNoeudAt(int indexRechercher) {
+        //return tableau[index];
+        int indexActuel = 0;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if (indexActuel == indexRechercher)
+                return courant;
+            indexActuel++;
+        }
+        return null;
     }
 
+    // Ajoute a la fin
     public void ajouter(int valeur) {
         //tableau[nbElements++] = valeur;
         Noeud dernier = null;
-        // La boucle ne s'arrête pas tant qu'il n'atteint pas le dernier Noeud, donc dernier = dernier Noeud
+        // La boucle ne s'arrête pas tant qu'il n'atteint pas le dernier Noeud, donc s'sarrete a null
         for (Noeud courant = premier; courant != null; courant = courant.prochain)
+            // Le dernier noeud prend la valeur du noeud courant
             dernier = courant;
-
+        // premier == null veut dire que la Liste est vide
         if(premier == null) {
             premier = new Noeud(valeur);
         } else {
+            // le Noeud après le dernier prend la valeur du nouveau Noeud
             dernier.prochain = new Noeud(valeur);
         }
         nbElements++;
     }
-    /*
+
 
     public void ajouter(int valeur, int index) {
-        if (nbElements == tableau.length)
-            resize();
-        for (int i = nbElements; i > index; i--)
-            tableau[i] = tableau[i - 1];
-        tableau[index] = valeur;
+        Noeud precedent = getNoeudAt(index - 1);
+        Noeud nouveau = new Noeud(valeur);
+        if(index == 0) {
+            nouveau.prochain = premier;
+            premier = nouveau;
+        } else {
+            nouveau.prochain = precedent.prochain;
+            precedent.prochain = nouveau;
+        }
         nbElements++;
+       /* index--;
+        Noeud precedent = null;
+        Noeud nouveau = new Noeud(valeur);
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+
+            if(index-- == 0) {
+                precedent = courant;
+                precedent.prochain = nouveau;
+                nouveau.prochain = precedent.prochain;
+                break;
+            }
+            nbElements++;
+        }*/
+    }
+    public void remplacer(int valeur, int index) {
+        int indexActuel = 0;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if(indexActuel == index)
+                courant.valeur = valeur;
+            indexActuel++;
+        }
+    }
+    public void inverser(int valeur, int index) {
+        Noeud precedent = getNoeudAt(index - 1);
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if (index == 0) {
+                courant.prochain = premier;
+                premier = courant;
+            } else {
+                courant.prochain = precedent.prochain;
+                precedent.prochain = courant;
+            }
+        }
     }
 
-    private void resize() {
-        int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
-        for (int i = 0; i < nbElements; i++)
-            nouveau[i] = tableau[i];
-        tableau = nouveau;
-    }
 
     public void ajouter(Liste autre) {
         for (int i = 0; i < autre.getNbElements(); i++)
             this.ajouter(autre.getElementAt(i));
     }
+    /*
 
     public int trouver(int valeur) {
         for (int i = 0; i < nbElements; i++)

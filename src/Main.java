@@ -11,10 +11,19 @@ public class Main {
         data.ajouter(2);
         data.ajouter(4);
         System.out.println(data);
+        // Ajouter par moi, a delete
         System.out.println(data.getNbElements());
         System.out.println(data.estVide());
 
-        System.out.println(data.getElementAt(0));
+        System.out.println(data.getElementAt(2));
+        data.ajouter(6,2);
+
+        System.out.println(data);
+        data.remplacer(4,2);
+        data.remplacer(6,3);
+        System.out.println(data);
+        data.inverser(7,1);
+        System.out.println(data);
 /*
         System.out.println("Test 3: Ajouter des valeurs à des index spécifiques");
         data.ajouter(-1, 0);
