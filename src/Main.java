@@ -1,93 +1,58 @@
 public class Main {
     public static void main(String[] args) {
-
+        // Test d'un vecteur vide
         Liste data = new Liste();
-
         System.out.println(data.getNbElements());
         System.out.println(data.estVide());
-
-        System.out.println("Test 1: Ajout de valeurs dans le vecteur");
-        data.ajouter(0);
-        data.ajouter(2);
-        data.ajouter(4);
-        System.out.println(data);
-        // Ajouter par moi, a delete
+        // Test d'un vecteur avec 3 éléments
+        data.ajouter(10);
+        data.ajouter(20);
+        data.ajouter(30);
+        System.out.println("\n"+data);
         System.out.println(data.getNbElements());
         System.out.println(data.estVide());
-
-        System.out.println(data.getElementAt(2));
-        data.ajouter(6,2);
-
+        data.ajouter(40);
+        System.out.println("\n"+data.getNbElements()+"\n");
+        // Test d'ajout à index spécifique
+        data.ajouter(5,-1);
+        data.ajouter(5,0);
         System.out.println(data);
-        data.remplacer(4,2);
-        data.remplacer(6,3);
+        // Ajouter les valeurs d'un Vecteur à un autre
+        Liste data2 = new Liste();
+        data2.ajouter(50);
+        data.ajouter(data2);
+        System.out.println("\n"+data);
+        // Verifier la valeur d'un index du Vecteur
+        System.out.println("\n"+data.getElementAt(2));
+        System.out.println(data.getElementAt(6));
+        // Donner l'index de la valeur recherchée
+        System.out.println("\n"+data.trouver(0));
+        System.out.println(data.trouver(50));
+        // Vérifie si tous les éléments de test sont dans data
+        Liste test = new Liste();
+        test.ajouter(5);
+        test.ajouter(10);
+        test.ajouter(30);
+        System.out.println("\n"+data.trouverTout(test));
+        // test.trouverTout(data); = false;
+        // Effacer un élément selon son index
+        System.out.println("\n"+data.effacerAt(-1));
+        data.effacerAt(0); // Effacer 5
         System.out.println(data);
-        data.inverser(7,1);
-        System.out.println(data);
-/*
-        System.out.println("Test 3: Ajouter des valeurs à des index spécifiques");
-        data.ajouter(-1, 0);
-        data.ajouter( 5, 4);
-        data.ajouter(11, 8);
-        System.out.println(data);
-        System.out.println(data.getNbElements());
-
-        System.out.println("Test 4: Ajouter des valeurs provenant d'un autre vecteur");
-        Liste v2 = new Liste();
-        v2.ajouter(50);
-        v2.ajouter(60);
-        v2.ajouter(70);
-        data.ajouter(v2);
-        System.out.println(data);
-        System.out.println(data.getNbElements());
-
-        System.out.println("Test 5: Ajouter des valeurs provenant d'un autre vecteur (vide)");
-        Liste v3 = new Liste();
-        data.ajouter(v3);
-        System.out.println(data);
-        System.out.println(data.getNbElements());
-
-        System.out.println("Test 6: Valider les valeurs présentes dans le vecteur");
-        System.out.println(data.getElementAt(0)); // valeur=-1
-        System.out.println(data.getElementAt(3)); //valeur=4
-        System.out.println(data.getElementAt(11)); // valeur=70
-
-        System.out.println("Test 7: Trouver des valeurs présentes dans le vecteur");
-        System.out.println(data.trouver(-1)); // index=0
-        System.out.println(data.trouver(4)); // index=3
-        System.out.println(data.trouver(70)); // index=11
-
-        System.out.println("Test 8: Trouver toutes les valeurs d'un autre vecteur");
-        Liste test8 = new Liste();
-        test8.ajouter(-1);
-        test8.ajouter(4);
-        test8.ajouter(70);
-        System.out.println(data.trouverTout(test8));
-
-        test8.ajouter(9);
-        System.out.println(data.trouverTout(test8));
-
-        System.out.println("Test 9: Effacer une valeur à une position spécifique");
-        System.out.println(data);
-        data.effacerAt(0);
-        data.effacerAt(4);
-        data.effacerAt(data.getNbElements() - 1);
-        System.out.println(data);
-        System.out.println(data.getNbElements());
-
-        System.out.println("Test 10: Effacer des valeurs provenant d'un autre vecteur");
-        Liste test9 = new Liste();
-        test9.ajouter(0);
-        test9.ajouter(5);
-        test9.ajouter(60);
-        data.effacerTout(test9);
-        System.out.println(data);
-        System.out.println(data.getNbElements());
-
-        System.out.println("Test 11: Effacer tout le contenu du vecteur");
+        // Efface tous les elements d'un Vecteur présent dans un autre
+        data.effacerTout(test); // Enlève 10 et 30 de data
+        System.out.println("\n"+data);
+        // Efface un élément recherché dans le Vecteur
+        data.effaceElement(40);
+        System.out.println("\n"+data);
+        // Remplace un élément à l'index indiqué par la valeur indiquée
+        data.replace(35,1);
+        System.out.println("\n"+data);
+        // Inverse deux données du tableau selon les index données
+        data.inverse(0,1);
+        System.out.println("\n"+data);
+        // Efface tous les éléments d'un Vecteur
         data.effacerTout();
-        System.out.println(data);
-        System.out.println(data.getNbElements());
-         */
+        System.out.println("\n"+data);
     }
 }

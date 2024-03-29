@@ -10,29 +10,15 @@ public class Liste {
         this.premier = premier;
         nbElements++;
     }
-
-    public String toString() {
-        String str = "[";
-        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
-            str += courant + ",";
-        }
-        // Sans le toString dans Noeud on ecrit
-        // str += courant.valeur;
-        return str + "]";
-    }
-
-
-    public int getNbElements() {
-        return nbElements;
-    }
-
-
     public boolean estVide() {
         return nbElements == 0;
     }
 
     public int getElementAt(int indexRechercher) {
-        return getNoeudAt(indexRechercher).valeur;
+        if(indexRechercher >= 0 && indexRechercher < nbElements)
+            return getNoeudAt(indexRechercher).valeur;
+        else
+            return -1;
         /* // Version longue
         int indexActuel = 0;
         for (Noeud courant = premier; courant != null; courant = courant.prochain) {
@@ -74,31 +60,28 @@ public class Liste {
 
 
     public void ajouter(int valeur, int index) {
-        Noeud precedent = getNoeudAt(index - 1);
-        Noeud nouveau = new Noeud(valeur);
-        if(index == 0) {
-            nouveau.prochain = premier;
-            premier = nouveau;
-        } else {
-            nouveau.prochain = precedent.prochain;
-            precedent.prochain = nouveau;
-        }
-        nbElements++;
-       /* index--;
-        Noeud precedent = null;
-        Noeud nouveau = new Noeud(valeur);
-        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
-
-            if(index-- == 0) {
-                precedent = courant;
-                precedent.prochain = nouveau;
+        if(index < 0 || index > nbElements)
+            System.out.println("Index invalide");
+        else {
+            Noeud precedent = getNoeudAt(index - 1);
+            Noeud nouveau = new Noeud(valeur);
+            if (index == 0) {
+                nouveau.prochain = premier;
+                premier = nouveau;
+            } else {
                 nouveau.prochain = precedent.prochain;
-                break;
+                precedent.prochain = nouveau;
             }
             nbElements++;
-        }*/
+        }
     }
-    public void remplacer(int valeur, int index) {
+    public void ajouter(Liste autre) {
+        for (int i = 0; i < autre.getNbElements(); i++) {
+            int elementToAdd = autre.getElementAt(i);
+            this.ajouter(elementToAdd);
+        }
+    }
+    public void replace(int valeur, int index) {
         int indexActuel = 0;
         for (Noeud courant = premier; courant != null; courant = courant.prochain) {
             if(indexActuel == index)
@@ -106,30 +89,24 @@ public class Liste {
             indexActuel++;
         }
     }
-    public void inverser(int valeur, int index) {
-        Noeud precedent = getNoeudAt(index - 1);
-        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
-            if (index == 0) {
-                courant.prochain = premier;
-                premier = courant;
-            } else {
-                courant.prochain = precedent.prochain;
-                precedent.prochain = courant;
-            }
+    public void inverse(int pos1, int pos2) {
+        Noeud position1 = getNoeudAt(pos1);
+        Noeud position2 = getNoeudAt(pos2);
+        int valeur;
+        valeur = position1.valeur;
+        position1.valeur = position2.valeur;
+        position2.valeur = valeur;
         }
-    }
 
-
-    public void ajouter(Liste autre) {
-        for (int i = 0; i < autre.getNbElements(); i++)
-            this.ajouter(autre.getElementAt(i));
-    }
-    /*
 
     public int trouver(int valeur) {
-        for (int i = 0; i < nbElements; i++)
-            if (tableau[i] == valeur)
-                return i;
+        int index = 0;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if (courant.valeur == valeur)
+                return index;
+            else
+                index++;
+        }
         return -1;
     }
 
@@ -144,10 +121,39 @@ public class Liste {
         if (index < 0 || index > nbElements)
             return false;
 
-        for (int i = index; i < nbElements; i++)
-            tableau[i] = tableau[i + 1];
+        if (index == 0) {
+            premier = premier.prochain;
+        } else {
+            Noeud precedent = getNoeudAt(index - 1);
+            precedent.prochain = precedent.prochain.prochain;
+        }
         nbElements--;
         return true;
+    }
+    public boolean effaceElement(int valeur) {
+        Noeud courant = premier;
+        Noeud precedent = null;
+
+        // Parcourir la liste
+        while (courant != null) {
+            // Si la valeur du nœud courant correspond à la valeur spécifiée
+            if (courant.valeur == valeur) {
+                // Si le nœud à supprimer est en tête de liste
+                if (precedent == null) {
+                    premier = courant.prochain;
+                } else {
+                    // Sinon, ajuster la référence du nœud précédent
+                    precedent.prochain = courant.prochain;
+                }
+                nbElements--; // Décrémenter le nombre d'éléments
+                return true; // Indiquer que l'élément a été supprimé
+            }
+            // Avancer dans la liste
+            precedent = courant;
+            courant = courant.prochain;
+        }
+        // Si la valeur n'a pas été trouvée dans la liste
+        return false;
     }
 
     public boolean effacerTout(Liste autre) {
@@ -165,8 +171,22 @@ public class Liste {
 
     public void effacerTout() {
         //effacerTout(this);
-        tableau = new int[TAILLE_INITIALE];
+        // Efface la tête de la liste et donc plus de noeuds
+        premier = null;
         nbElements = 0;
     }
- */
+    public String toString() {
+        String str = "[";
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            str += courant + ",";
+        }
+        // Sans le toString dans Noeud on ecrit
+        // str += courant.valeur;
+        return str + "]";
+    }
+
+    public int getNbElements() {
+        return nbElements;
+    }
+
 }
